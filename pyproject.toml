@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "boto3>=1.43.51",
+    "lxml>=6.1.1",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.2",
+    "playwright>=1.40.0",
+]
