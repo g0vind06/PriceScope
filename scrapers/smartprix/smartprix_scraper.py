@@ -85,7 +85,7 @@ def parse_products(html, category):
         return []
 
     products = []
-    scraped_at = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+    scraped_at = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()  #(datetime.now(timezone.utc).replace(tzinfo=None).isoformat() will give you a string representation of the current UTC time in ISO 8601 format, which is widely used and easily readable.)
 
     for card in cards:
         try:
