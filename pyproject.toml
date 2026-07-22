@@ -11,4 +11,5 @@ dependencies = [
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
     "playwright>=1.40.0",
+    "pyspark>=4.2.0",
 ]
