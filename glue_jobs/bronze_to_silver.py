@@ -1,22 +1,30 @@
 import sys
+import boto3
 from awsglue.utils import getResolvedOptions
 from awsglue.context import GlueContext
 from awsglue.job import Job
+from datetime import datetime, timezone
+import time
 from pyspark.context import SparkContext
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, IntegerType, TimestampType
 
 #INIT
-args = getResolvedOptions(sys.argv, ['JOB_NAME'])  #Glue standard way to get job name from command line arguments
+args = getResolvedOptions(sys.argv, ['JOB_NAME', 'run_date'])  #Glue standard way to get job name and run date from command line arguments
 sc = SparkContext()
 glueContext = GlueContext(sc)
 spark = glueContext.spark_session
 job = Job(glueContext)
 job.init(args['JOB_NAME'], args)
 
+run_date = args['run_date']  #run_date is passed as a parameter to the Glue job. It is used to filter the bronze data for the specific run date.
+print(f"Processing run_date: {run_date}")
+
+dt=datetime.strptime(run_date, "%Y-%m-%d")
+
 #CONFIG
 BUCKET = 'price-scope'
-BRONZE_PATH = f"s3://{BUCKET}/bronze/source=smartprix/"
+BRONZE_PATH = f"s3://{BUCKET}/bronze/source=smartprix/category=*/year={dt.year}/month={dt.month:02d}/day={dt.day:02d}/*"
 SILVER_PATH = f"s3://{BUCKET}/silver/source=smartprix/"
 
 print(f"Reading bronze data from: {BRONZE_PATH}")
@@ -67,11 +75,67 @@ df_final = df_deduped.select(
     "scraped_at", "run_date"
 )
 
+#Delete existing data for the run_date in silver before writing new data. This is to avoid duplicates when the job is re-run for the same run_date.
+s3_client = boto3.client('s3', region_name='eu-north-1')
+paginator = s3_client.get_paginator('list_objects_v2')
+
+for category in df_final.select("category").distinct().rdd.flatMap(lambda x: x).collect():
+    prefix = f"silver/source=smartprix/category={category}/run_date={run_date}/"
+    print(f"Deleting existing data in silver for category: {category}, run_date: {run_date}")
+    for page in paginator.paginate(Bucket=BUCKET, Prefix=prefix):
+        if 'Contents' in page:
+            for obj in page['Contents']:
+                s3_client.delete_object(Bucket=BUCKET, Key=obj['Key'])
+                print(f"Deleted: {obj['Key']}")
+
 #WRITE TO SILVER
 #Partioned by category and run_date for efficient querying
-df_final.write.mode("overwrite").partitionBy("category", "run_date").parquet(SILVER_PATH)
+df_final.write.mode("append").partitionBy("category", "run_date").parquet(SILVER_PATH)
 
-print(f"Written to silver path: {SILVER_PATH}")
+print(f"Appended to silver path: {SILVER_PATH} for run_date: {run_date}")
 print(f"Final record count: {df_final.count()}")
+
+#Added after phase 3 to register partitions for the newly added data.
+
+def register_partitions(spark_df):
+    """
+    After writing the silver parquet, register new partitions in the Redshift spectrum so queries pick up new data.
+    """
+
+    client = boto3.client('redshift-data', region_name='eu-north-1')
+    partitions = spark_df.select("category", "run_date").distinct().collect()
+    for row in partitions:
+        category = row['category']
+        run_date = str(row['run_date'])
+
+        s3_location = f"s3://{BUCKET}/silver/source=smartprix/category={category}/run_date={run_date}/"
+
+        sql = f"ALTER TABLE spectrum_silver.stg_price_snapshots ADD IF NOT EXISTS PARTITION (category='{category}', run_date='{run_date}') LOCATION '{s3_location}'"
+
+        try:
+            response = client.execute_statement(
+                WorkgroupName='pricescope-workgroup',
+                Database='dev',
+                SecretArn='arn:aws:secretsmanager:eu-north-1:361966322300:secret:Redshift/pricescope/admin-RFateP',
+                Sql=sql
+            )
+            statement_id = response['Id']
+
+            while True:
+                status_response = client.describe_statement(Id=statement_id)
+                status = status_response['Status']
+                if status in ['FINISHED', 'FAILED', 'ABORTED']:
+                    break
+                time.sleep(1)                        #using sleep since execute_statement is asynchronous and we need to wait for the statement to finish before checking the status.
+            if status == 'FINISHED':
+                print(f"Successfully registered partition for category={category}, run_date={run_date}")
+            else:
+                error_message = status_response.get('Error', 'Unknown error')
+                print(f"Failed to register partition for category={category}, run_date={run_date}: {error_message}")
+        except Exception as e:
+            print(f"Partition may already exist, skipping: {e}")
+
+#Call this after writing to silver
+register_partitions(df_final) 
 
 job.commit()
