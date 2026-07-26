@@ -77,7 +77,7 @@ df_final = df_deduped.select(
 
 #Delete existing data for the run_date in silver before writing new data. This is to avoid duplicates when the job is re-run for the same run_date.
 s3_client = boto3.client('s3', region_name='eu-north-1')
-paginator = s3_client.get_paginator('list_objects_v2')
+paginator = s3_client.get_paginator('list_objects_v2')  #we use paginator to handle cases where there are more than 1000 objects in the prefix, as list_objects_v2 returns a maximum of 1000 objects per request and paginator makes repeated calls, fetching page after page (1000 objects at a time) until all objects are retrieved. This is important for our use case as we may have more than 1000 objects in the silver path for a given run_date and category.
 
 for category in df_final.select("category").distinct().rdd.flatMap(lambda x: x).collect():
     prefix = f"silver/source=smartprix/category={category}/run_date={run_date}/"

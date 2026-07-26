@@ -1,0 +1,161 @@
+[0m03:36:19.384699 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C870A66120>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C8731BFED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C8731BF750>]}
+
+
+============================== 03:36:19.390650 | 9ed020cd-0192-4822-9354-8175d2ed7b9c ==============================
+[0m03:36:19.390650 [info ] [MainThread]: Running with dbt=1.12.0
+[0m03:36:19.391294 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\gsheshmanitiwari\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'C:\\Users\\gsheshmanitiwari\\Documents\\PriceScope\\dbt_project\\logs'}
+[0m03:36:19.505768 [info ] [MainThread]: dbt version: 1.12.0
+[0m03:36:19.506352 [info ] [MainThread]: python version: 3.13.1
+[0m03:36:19.506704 [info ] [MainThread]: python path: C:\Users\gsheshmanitiwari\Documents\PriceScope\.venv\Scripts\python.exe
+[0m03:36:19.507004 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m03:36:19.510413 [info ] [MainThread]: Using profiles dir at C:\Users\gsheshmanitiwari\.dbt
+[0m03:36:19.510870 [info ] [MainThread]: Using profiles.yml file at C:\Users\gsheshmanitiwari\.dbt\profiles.yml
+[0m03:36:19.511282 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\gsheshmanitiwari\Documents\PriceScope\dbt_project\dbt_project.yml
+[0m03:36:19.583922 [info ] [MainThread]: Configuration:
+[0m03:36:19.584539 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m03:36:19.584945 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m03:36:19.585288 [info ] [MainThread]: Required dependencies:
+[0m03:36:19.585622 [debug] [MainThread]: Executing "git --help"
+[0m03:36:19.842722 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m03:36:19.843150 [debug] [MainThread]: STDERR: "b''"
+[0m03:36:19.843361 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m03:36:19.844055 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m03:36:19.844816 [info ] [MainThread]: [31m1 check failed:[0m
+[0m03:36:19.845279 [info ] [MainThread]: Profile loading failed for the following reason:
+Runtime Error
+  output 'dev' of profile 'pricescope' is misconfigured in profiles.yml
+
+
+[0m03:36:19.846306 [debug] [MainThread]: Command `dbt debug` failed at 03:36:19.846205 after 0.66 seconds
+[0m03:36:19.846591 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C8710E3100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C8734316D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C86EFEB130>]}
+[0m03:36:19.846863 [debug] [MainThread]: Flushing usage events
+[0m03:36:21.307049 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:37:51.139918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A8E4456120>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A8E6BAFED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A8E6BAF750>]}
+
+
+============================== 03:37:51.144290 | 96b568a2-3487-4a6f-8c7c-b578b2706d15 ==============================
+[0m03:37:51.144290 [info ] [MainThread]: Running with dbt=1.12.0
+[0m03:37:51.144908 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\gsheshmanitiwari\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\gsheshmanitiwari\\Documents\\PriceScope\\dbt_project\\logs'}
+[0m03:37:51.172665 [info ] [MainThread]: dbt version: 1.12.0
+[0m03:37:51.173339 [info ] [MainThread]: python version: 3.13.1
+[0m03:37:51.174004 [info ] [MainThread]: python path: C:\Users\gsheshmanitiwari\Documents\PriceScope\.venv\Scripts\python.exe
+[0m03:37:51.174710 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m03:37:51.526030 [debug] [MainThread]: Redshift adapter: Setting redshift_connector to ERROR
+[0m03:37:51.526402 [debug] [MainThread]: Redshift adapter: Setting redshift_connector.core to ERROR
+[0m03:37:58.180733 [info ] [MainThread]: Using profiles dir at C:\Users\gsheshmanitiwari\.dbt
+[0m03:37:58.181407 [info ] [MainThread]: Using profiles.yml file at C:\Users\gsheshmanitiwari\.dbt\profiles.yml
+[0m03:37:58.181825 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\gsheshmanitiwari\Documents\PriceScope\dbt_project\dbt_project.yml
+[0m03:37:58.274086 [info ] [MainThread]: Configuration:
+[0m03:37:58.274964 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m03:37:58.275702 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m03:37:58.276277 [info ] [MainThread]: Required dependencies:
+[0m03:37:58.276861 [debug] [MainThread]: Executing "git --help"
+[0m03:37:58.549987 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m03:37:58.550463 [debug] [MainThread]: STDERR: "b''"
+[0m03:37:58.550714 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m03:37:58.551255 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m03:37:58.551748 [info ] [MainThread]: [31m1 check failed:[0m
+[0m03:37:58.552219 [info ] [MainThread]: Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "pricescope", target "dev" invalid: '5439' is not of type 'integer'
+
+
+[0m03:37:58.553584 [debug] [MainThread]: Command `dbt debug` failed at 03:37:58.553435 after 7.59 seconds
+[0m03:37:58.553970 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A8E4AD3100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A8E79E4B90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A8E7917130>]}
+[0m03:37:58.554677 [debug] [MainThread]: Flushing usage events
+[0m03:38:00.108533 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:39:50.412620 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217E4496120>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217E6BEFED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217E6BEF750>]}
+
+
+============================== 03:39:50.417405 | 2eac22ea-d8b3-4ebe-9bf6-11b299aa6da0 ==============================
+[0m03:39:50.417405 [info ] [MainThread]: Running with dbt=1.12.0
+[0m03:39:50.417925 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\gsheshmanitiwari\\.dbt', 'invocation_command': 'dbt debug', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'C:\\Users\\gsheshmanitiwari\\Documents\\PriceScope\\dbt_project\\logs'}
+[0m03:39:50.447303 [info ] [MainThread]: dbt version: 1.12.0
+[0m03:39:50.447807 [info ] [MainThread]: python version: 3.13.1
+[0m03:39:50.448180 [info ] [MainThread]: python path: C:\Users\gsheshmanitiwari\Documents\PriceScope\.venv\Scripts\python.exe
+[0m03:39:50.448635 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m03:39:50.754831 [debug] [MainThread]: Redshift adapter: Setting redshift_connector to ERROR
+[0m03:39:50.755179 [debug] [MainThread]: Redshift adapter: Setting redshift_connector.core to ERROR
+[0m03:39:57.014936 [info ] [MainThread]: Using profiles dir at C:\Users\gsheshmanitiwari\.dbt
+[0m03:39:57.015768 [info ] [MainThread]: Using profiles.yml file at C:\Users\gsheshmanitiwari\.dbt\profiles.yml
+[0m03:39:57.016380 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\gsheshmanitiwari\Documents\PriceScope\dbt_project\dbt_project.yml
+[0m03:39:57.018010 [info ] [MainThread]: adapter type: redshift
+[0m03:39:57.018311 [info ] [MainThread]: adapter version: 1.11.0
+[0m03:39:57.090284 [info ] [MainThread]: Configuration:
+[0m03:39:57.090922 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m03:39:57.091522 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m03:39:57.091895 [info ] [MainThread]: Required dependencies:
+[0m03:39:57.092318 [debug] [MainThread]: Executing "git --help"
+[0m03:39:57.508173 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m03:39:57.508969 [debug] [MainThread]: STDERR: "b''"
+[0m03:39:57.509366 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m03:39:57.509845 [info ] [MainThread]: Connection:
+[0m03:39:57.510424 [info ] [MainThread]:   host: pricescope-workgroup.361966322300.eu-north-1.redshift-serverless.amazonaws.com
+[0m03:39:57.510797 [info ] [MainThread]:   user: admin
+[0m03:39:57.511071 [info ] [MainThread]:   port: 5439
+[0m03:39:57.511331 [info ] [MainThread]:   database: dev
+[0m03:39:57.511605 [info ] [MainThread]:   method: database
+[0m03:39:57.511890 [info ] [MainThread]:   cluster_id: None
+[0m03:39:57.512160 [info ] [MainThread]:   iam_profile: None
+[0m03:39:57.512417 [info ] [MainThread]:   schema: marts
+[0m03:39:57.512676 [info ] [MainThread]:   sslmode: require
+[0m03:39:57.512930 [info ] [MainThread]:   region: None
+[0m03:39:57.513191 [info ] [MainThread]:   sslmode: require
+[0m03:39:57.513467 [info ] [MainThread]:   region: None
+[0m03:39:57.513736 [info ] [MainThread]:   autocreate: False
+[0m03:39:57.514028 [info ] [MainThread]:   db_groups: []
+[0m03:39:57.514313 [info ] [MainThread]:   ra3_node: False
+[0m03:39:57.514614 [info ] [MainThread]:   datasharing: False
+[0m03:39:57.514858 [info ] [MainThread]:   connect_timeout: None
+[0m03:39:57.515305 [info ] [MainThread]:   role: None
+[0m03:39:57.515735 [info ] [MainThread]:   retries: 1
+[0m03:39:57.516268 [info ] [MainThread]:   retry_all: False
+[0m03:39:57.516981 [info ] [MainThread]:   autocommit: True
+[0m03:39:57.517719 [info ] [MainThread]:   access_key_id: None
+[0m03:39:57.518091 [info ] [MainThread]:   is_serverless: None
+[0m03:39:57.518452 [info ] [MainThread]:   serverless_work_group: None
+[0m03:39:57.518974 [info ] [MainThread]:   serverless_acct_id: None
+[0m03:39:57.519408 [info ] [MainThread]:   tcp_keepalive: True
+[0m03:39:57.519809 [info ] [MainThread]:   tcp_keepalive_idle: None
+[0m03:39:57.520192 [info ] [MainThread]:   tcp_keepalive_interval: None
+[0m03:39:57.520631 [info ] [MainThread]:   tcp_keepalive_count: None
+[0m03:39:57.521176 [info ] [MainThread]:   query_group: None
+[0m03:39:57.521743 [info ] [MainThread]:   allow_concurrent_drops: False
+[0m03:39:57.522235 [info ] [MainThread]:   drop_without_cascade: False
+[0m03:39:57.523052 [info ] [MainThread]: Registered adapter: redshift=1.11.0
+[0m03:39:58.139232 [debug] [MainThread]: Acquiring new redshift connection 'debug'
+[0m03:39:58.142406 [debug] [MainThread]: Using redshift connection "debug"
+[0m03:39:58.142638 [debug] [MainThread]: On debug: select 1 as id
+[0m03:39:58.142810 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m03:39:58.143204 [debug] [MainThread]: Redshift adapter: Connecting to Redshift with 'database' credentials method
+[0m03:39:58.147065 [debug] [MainThread]: Redshift adapter: Establishing connection using ssl with `sslmode` set to 'require'.To connect without ssl, set `sslmode` to 'disable'.
+[0m03:40:19.480148 [debug] [MainThread]: Redshift adapter: Got a retryable error when attempting to open a redshift connection.
+1 attempts remaining. Retrying in 1 seconds.
+Error:
+('connection time out', TimeoutError(10060, 'A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond', None, 10060, None))
+[0m03:40:41.536712 [debug] [MainThread]: Redshift adapter: Error running SQL: select 1 as id
+[0m03:40:41.537509 [debug] [MainThread]: Redshift adapter: Rolling back transaction.
+[0m03:40:41.538096 [debug] [MainThread]: Redshift adapter: Not retrying error: Database Error
+  ('connection time out', TimeoutError(10060, 'A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond', None, 10060, None))
+[0m03:40:41.538459 [debug] [MainThread]: On debug: No close available on handle
+[0m03:40:41.538701 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m03:40:41.539165 [info ] [MainThread]: [31m1 check failed:[0m
+[0m03:40:41.539701 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  ('connection time out', TimeoutError(10060, 'A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond', None, 10060, None))
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m03:40:41.540812 [debug] [MainThread]: Command `dbt debug` failed at 03:40:41.540721 after 51.34 seconds
+[0m03:40:41.541040 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m03:40:41.541242 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217E7955BA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217E798E210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000217E7AE08D0>]}
+[0m03:40:41.541495 [debug] [MainThread]: Flushing usage events
+[0m03:40:42.934542 [debug] [MainThread]: An error was encountered while trying to flush usage events

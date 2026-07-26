@@ -12,4 +12,5 @@ dependencies = [
     "requests>=2.34.2",
     "playwright>=1.40.0",
     "pyspark>=4.2.0",
+    "dbt-redshift>=1.11.0",
 ]
