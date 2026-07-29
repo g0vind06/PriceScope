@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_smartprix_prices
+    description: "Cleaned staging layer over Spectrum external table."
+    columns:
+      - name: product_id
+        tests: 
+          - not_null
+      - name: current_price
+        tests:
+          - not_null
+    

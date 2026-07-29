@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: spectrum_silver
+    database: dev
+    schema: spectrum_silver
+    tables:
+      - name: stg_price_snapshots
+        description: "Raw price snapshots from Smartprix, landed via Redshift Spectrum over S3 silver layer."
+        columns:
+          - name: product_id
+            description: "MD5 hash of the normalized product name+category"
+          - name: current_price
+            description: "Current price of the product"
+          - name: mrp
+            description: "MRP - equals current_price when no discount exists"
+          - name: category
+            description: "Partition column - smartphones or laptops"
+          - name: run_date
+            description: "Partition column - date of scrape run"

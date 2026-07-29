@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Date Dimension, one row per calendar day"
+    columns:
+      - name: date_key
+        description: "Surrogate key, YYYYMMDD integer format"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_category
+    description: "Category dimension - smartphones, laptops"
+    columns:
+      - name: category_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_platform
+    description: "Platform dimension - currently just Smartprix"
+    columns:
+      - name: platform_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_product
+    description: "One row per unique product, latest knwon atributes"
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+  
+  - name: fact_price_snapshots
+    description: "One row per product per scrape event"
+    columns:
+      - name: snapshot_id
+        tests:
+          - unique
+          - not_null
+      - name: product_key
+        tests: 
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_key
+      - name: category_key
+        tests: 
+          - not_null
+          - relationships:
+              to: ref('dim_category')
+              field: category_key
+      - name: platform_key
+        tests: 
+          - not_null
+          - relationships:
+              to: ref('dim_platform')
+              field: platform_key
+      - name: date_key
+        tests: 
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+      - name: current_price
+        tests:
+          - not_null

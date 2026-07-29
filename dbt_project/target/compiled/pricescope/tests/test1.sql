@@ -1,0 +1,1 @@
+SELECT * FROM "dev"."marts_staging"."stg_smartprix_prices"
