@@ -1,0 +1,18 @@
+#this file is made to store the credentials for dbt to connect to redshift serverless. To mount it into the docker container. Different from .dbt/profiles.yml because that file is not mounted into the container. This file is mounted into the container and used by dbt to connect to redshift serverless.
+#this file is not used by dbt outside the container. It is only used by dbt inside the container.   
+
+
+#this file would be accessed by docker containers. it would appear at /opt/airflow/pricescope/dbt_project/profiles.yml inside the container because of the bind mount defined in docker-compose.yaml
+pricescope:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      host: "{{ env_var('REDSHIFT_HOST') }}"
+      port: "{{ env_var('REDSHIFT_PORT') | as_number }}"
+      user: "{{ env_var('REDSHIFT_USER') }}"
+      password: "{{ env_var('REDSHIFT_PASSWORD') }}"
+      dbname: "{{ env_var('REDSHIFT_DATABASE') }}"
+      schema: "{{ env_var('REDSHIFT_SCHEMA') }}"
+      threads: 4
+      sslmode: require
