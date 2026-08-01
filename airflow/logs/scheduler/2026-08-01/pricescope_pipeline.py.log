@@ -4261,3 +4261,17 @@ airflow.exceptions.AirflowTimetableInvalid: [0 6, 18 * * *] is not acceptable
 [2026-08-01T19:52:37.956+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:52:37.955+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-08-01T19:52:38.011+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:52:38.010+0000] {dag.py:4180} INFO - Setting next_dagrun for pricescope_pipeline to 2026-08-01 06:00:00+00:00, run_after=2026-08-01 18:00:00+00:00
 [2026-08-01T19:52:38.057+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pricescope_pipeline.py took 0.265 seconds
+[2026-08-01T19:53:08.172+0000] {processor.py:186} INFO - Started process (PID=916) to work on /opt/airflow/dags/pricescope_pipeline.py
+[2026-08-01T19:53:08.175+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pricescope_pipeline.py for tasks to queue
+[2026-08-01T19:53:08.180+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:53:08.180+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pricescope_pipeline.py
+[2026-08-01T19:53:08.242+0000] {processor.py:925} INFO - DAG(s) 'pricescope_pipeline' retrieved from /opt/airflow/dags/pricescope_pipeline.py
+[2026-08-01T19:53:08.277+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:53:08.276+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-08-01T19:53:08.320+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:53:08.319+0000] {dag.py:4180} INFO - Setting next_dagrun for pricescope_pipeline to 2026-08-01 06:00:00+00:00, run_after=2026-08-01 18:00:00+00:00
+[2026-08-01T19:53:08.348+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pricescope_pipeline.py took 0.183 seconds
+[2026-08-01T19:53:38.579+0000] {processor.py:186} INFO - Started process (PID=923) to work on /opt/airflow/dags/pricescope_pipeline.py
+[2026-08-01T19:53:38.582+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/pricescope_pipeline.py for tasks to queue
+[2026-08-01T19:53:38.590+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:53:38.589+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/pricescope_pipeline.py
+[2026-08-01T19:53:38.637+0000] {processor.py:925} INFO - DAG(s) 'pricescope_pipeline' retrieved from /opt/airflow/dags/pricescope_pipeline.py
+[2026-08-01T19:53:38.679+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:53:38.679+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-08-01T19:53:38.719+0000] {logging_mixin.py:190} INFO - [2026-08-01T19:53:38.719+0000] {dag.py:4180} INFO - Setting next_dagrun for pricescope_pipeline to 2026-08-01 06:00:00+00:00, run_after=2026-08-01 18:00:00+00:00
+[2026-08-01T19:53:38.748+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/pricescope_pipeline.py took 0.181 seconds
