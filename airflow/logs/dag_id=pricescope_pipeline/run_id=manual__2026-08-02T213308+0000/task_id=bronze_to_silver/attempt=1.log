@@ -1,0 +1,30 @@
+[2026-08-02T21:33:39.735+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-08-02T21:33:39.767+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pricescope_pipeline.bronze_to_silver manual__2026-08-02T21:33:08+00:00 [queued]>
+[2026-08-02T21:33:39.782+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pricescope_pipeline.bronze_to_silver manual__2026-08-02T21:33:08+00:00 [queued]>
+[2026-08-02T21:33:39.785+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-08-02T21:33:39.808+0000] {taskinstance.py:2889} INFO - Executing <Task(GlueJobOperator): bronze_to_silver> on 2026-08-02 21:33:08+00:00
+[2026-08-02T21:33:39.817+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=4661) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-08-02T21:33:39.821+0000] {standard_task_runner.py:72} INFO - Started process 4662 to run task
+[2026-08-02T21:33:39.824+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'pricescope_pipeline', 'bronze_to_silver', 'manual__2026-08-02T21:33:08+00:00', '--job-id', '73', '--raw', '--subdir', 'DAGS_FOLDER/pricescope_pipeline.py', '--cfg-path', '/tmp/tmpaunu_hjr']
+[2026-08-02T21:33:39.826+0000] {standard_task_runner.py:105} INFO - Job 73: Subtask bronze_to_silver
+[2026-08-02T21:33:39.921+0000] {task_command.py:467} INFO - Running <TaskInstance: pricescope_pipeline.bronze_to_silver manual__2026-08-02T21:33:08+00:00 [running]> on host a06cd3c668fc
+[2026-08-02T21:33:40.117+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='govind' AIRFLOW_CTX_DAG_ID='pricescope_pipeline' AIRFLOW_CTX_TASK_ID='bronze_to_silver' AIRFLOW_CTX_EXECUTION_DATE='2026-08-02T21:33:08+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-08-02T21:33:08+00:00'
+[2026-08-02T21:33:40.121+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-08-02T21:33:40.140+0000] {glue.py:188} INFO - Initializing AWS Glue Job: pricescope-bronze-to-silver. Wait for completion: True
+[2026-08-02T21:33:40.143+0000] {glue.py:365} INFO - Checking if job already exists: pricescope-bronze-to-silver
+[2026-08-02T21:33:40.156+0000] {base_aws.py:603} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2026-08-02T21:33:40.158+0000] {base_aws.py:177} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name='eu-north-1'). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2026-08-02T21:33:40.641+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2026-08-02T21:33:41.832+0000] {glue.py:209} INFO - You can monitor this Glue Job run at: https://console.aws.amazon.com/gluestudio/home?region=eu-north-1#/job/pricescope-bronze-to-silver/run/jr_7f367aebe0471c1bdcddcbd71392cab8fbc6be68b8b21b8e6962ed7ac57d4cf7
+[2026-08-02T21:33:42.038+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T21:33:48.285+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T21:33:54.531+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T21:34:00.058+0000] {local_task_job_runner.py:346} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2026-08-02T21:34:00.061+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-08-02T21:34:00.075+0000] {process_utils.py:132} INFO - Sending 15 to group 4662. PIDs of all processes in the group: [4662]
+[2026-08-02T21:34:00.081+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 4662
+[2026-08-02T21:34:00.084+0000] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-08-02T21:34:00.103+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-08-02T21:34:00.139+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=4662, status='terminated', exitcode=0, started='21:33:39') (4662) terminated with exit code 0

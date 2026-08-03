@@ -1,0 +1,152 @@
+[2026-08-01T20:37:49.056+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-08-01T20:37:49.078+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pricescope_pipeline.dbt_test scheduled__2026-08-01T06:00:00+00:00 [queued]>
+[2026-08-01T20:37:49.090+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pricescope_pipeline.dbt_test scheduled__2026-08-01T06:00:00+00:00 [queued]>
+[2026-08-01T20:37:49.094+0000] {taskinstance.py:2866} INFO - Starting attempt 4 of 4
+[2026-08-01T20:37:49.109+0000] {taskinstance.py:2889} INFO - Executing <Task(BashOperator): dbt_test> on 2026-08-01 06:00:00+00:00
+[2026-08-01T20:37:49.116+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1777) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-08-01T20:37:49.118+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'pricescope_pipeline', 'dbt_test', 'scheduled__2026-08-01T06:00:00+00:00', '--job-id', '34', '--raw', '--subdir', 'DAGS_FOLDER/pricescope_pipeline.py', '--cfg-path', '/tmp/tmpp3_fmm_s']
+[2026-08-01T20:37:49.119+0000] {standard_task_runner.py:72} INFO - Started process 1778 to run task
+[2026-08-01T20:37:49.121+0000] {standard_task_runner.py:105} INFO - Job 34: Subtask dbt_test
+[2026-08-01T20:37:49.206+0000] {task_command.py:467} INFO - Running <TaskInstance: pricescope_pipeline.dbt_test scheduled__2026-08-01T06:00:00+00:00 [running]> on host a06cd3c668fc
+[2026-08-01T20:37:49.279+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='govind' AIRFLOW_CTX_DAG_ID='pricescope_pipeline' AIRFLOW_CTX_TASK_ID='dbt_test' AIRFLOW_CTX_EXECUTION_DATE='2026-08-01T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-08-01T06:00:00+00:00'
+[2026-08-01T20:37:49.281+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-08-01T20:37:49.292+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2026-08-01T20:37:49.294+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', '/opt/dbt_venv/bin/dbt test --profiles-dir /opt/***/pricescope/dbt_project --project-dir /opt/***/pricescope/dbt_project ']
+[2026-08-01T20:37:49.307+0000] {subprocess.py:99} INFO - Output:
+[2026-08-01T20:37:51.324+0000] {subprocess.py:106} INFO - [0m20:37:51  Running with dbt=1.12.0
+[2026-08-01T20:37:51.807+0000] {subprocess.py:106} INFO - [0m20:37:51  Registered adapter: redshift=1.11.0
+[2026-08-01T20:37:53.178+0000] {subprocess.py:106} INFO - [0m20:37:53  Found 6 models, 22 data tests, 1 source, 567 macros
+[2026-08-01T20:37:53.184+0000] {subprocess.py:106} INFO - [0m20:37:53
+[2026-08-01T20:37:53.186+0000] {subprocess.py:106} INFO - [0m20:37:53  Concurrency: 4 threads (target='dev')
+[2026-08-01T20:37:53.188+0000] {subprocess.py:106} INFO - [0m20:37:53
+[2026-08-01T20:37:59.358+0000] {subprocess.py:106} INFO - [0m20:37:59  1 of 22 START test not_null_dim_category_category_key .......................... [RUN]
+[2026-08-01T20:37:59.360+0000] {subprocess.py:106} INFO - [0m20:37:59  2 of 22 START test not_null_dim_date_date_key .................................. [RUN]
+[2026-08-01T20:37:59.363+0000] {subprocess.py:106} INFO - [0m20:37:59  3 of 22 START test not_null_dim_platform_platform_key .......................... [RUN]
+[2026-08-01T20:37:59.366+0000] {subprocess.py:106} INFO - [0m20:37:59  4 of 22 START test not_null_dim_product_product_key ............................ [RUN]
+[2026-08-01T20:38:02.169+0000] {subprocess.py:106} INFO - [0m20:38:02  2 of 22 PASS not_null_dim_date_date_key ........................................ [[32mPASS[0m in 2.80s]
+[2026-08-01T20:38:02.171+0000] {subprocess.py:106} INFO - [0m20:38:02  3 of 22 PASS not_null_dim_platform_platform_key ................................ [[32mPASS[0m in 2.79s]
+[2026-08-01T20:38:02.180+0000] {subprocess.py:106} INFO - [0m20:38:02  5 of 22 START test not_null_fact_price_snapshots_category_key .................. [RUN]
+[2026-08-01T20:38:02.181+0000] {subprocess.py:106} INFO - [0m20:38:02  6 of 22 START test not_null_fact_price_snapshots_current_price ................. [RUN]
+[2026-08-01T20:38:02.269+0000] {subprocess.py:106} INFO - [0m20:38:02  4 of 22 PASS not_null_dim_product_product_key .................................. [[32mPASS[0m in 2.89s]
+[2026-08-01T20:38:02.271+0000] {subprocess.py:106} INFO - [0m20:38:02  1 of 22 PASS not_null_dim_category_category_key ................................ [[32mPASS[0m in 2.90s]
+[2026-08-01T20:38:02.284+0000] {subprocess.py:106} INFO - [0m20:38:02  7 of 22 START test not_null_fact_price_snapshots_date_key ...................... [RUN]
+[2026-08-01T20:38:02.286+0000] {subprocess.py:106} INFO - [0m20:38:02  8 of 22 START test not_null_fact_price_snapshots_platform_key .................. [RUN]
+[2026-08-01T20:38:04.892+0000] {subprocess.py:106} INFO - [0m20:38:04  8 of 22 PASS not_null_fact_price_snapshots_platform_key ........................ [[32mPASS[0m in 2.60s]
+[2026-08-01T20:38:04.902+0000] {subprocess.py:106} INFO - [0m20:38:04  9 of 22 START test not_null_fact_price_snapshots_product_key ................... [RUN]
+[2026-08-01T20:38:04.905+0000] {subprocess.py:106} INFO - [0m20:38:04  6 of 22 PASS not_null_fact_price_snapshots_current_price ....................... [[32mPASS[0m in 2.72s]
+[2026-08-01T20:38:04.915+0000] {subprocess.py:106} INFO - [0m20:38:04  5 of 22 PASS not_null_fact_price_snapshots_category_key ........................ [[32mPASS[0m in 2.73s]
+[2026-08-01T20:38:04.937+0000] {subprocess.py:106} INFO - [0m20:38:04  10 of 22 START test not_null_fact_price_snapshots_snapshot_id .................. [RUN]
+[2026-08-01T20:38:04.944+0000] {subprocess.py:106} INFO - [0m20:38:04  11 of 22 START test not_null_stg_smartprix_prices_current_price ................ [RUN]
+[2026-08-01T20:38:05.021+0000] {subprocess.py:106} INFO - [0m20:38:05  7 of 22 PASS not_null_fact_price_snapshots_date_key ............................ [[32mPASS[0m in 2.73s]
+[2026-08-01T20:38:05.029+0000] {subprocess.py:106} INFO - [0m20:38:05  12 of 22 START test not_null_stg_smartprix_prices_product_id ................... [RUN]
+[2026-08-01T20:38:07.665+0000] {subprocess.py:106} INFO - [0m20:38:07  11 of 22 PASS not_null_stg_smartprix_prices_current_price ...................... [[32mPASS[0m in 2.72s]
+[2026-08-01T20:38:07.673+0000] {subprocess.py:106} INFO - [0m20:38:07  13 of 22 START test relationships_fact_price_snapshots_category_key__category_key__ref_dim_category_  [RUN]
+[2026-08-01T20:38:07.706+0000] {subprocess.py:106} INFO - [0m20:38:07  12 of 22 PASS not_null_stg_smartprix_prices_product_id ......................... [[32mPASS[0m in 2.67s]
+[2026-08-01T20:38:07.711+0000] {subprocess.py:106} INFO - [0m20:38:07  14 of 22 START test relationships_fact_price_snapshots_date_key__date_key__ref_dim_date_  [RUN]
+[2026-08-01T20:38:07.788+0000] {subprocess.py:106} INFO - [0m20:38:07  10 of 22 PASS not_null_fact_price_snapshots_snapshot_id ........................ [[32mPASS[0m in 2.85s]
+[2026-08-01T20:38:07.801+0000] {subprocess.py:106} INFO - [0m20:38:07  15 of 22 START test relationships_fact_price_snapshots_platform_key__platform_key__ref_dim_platform_  [RUN]
+[2026-08-01T20:38:07.853+0000] {subprocess.py:106} INFO - [0m20:38:07  9 of 22 PASS not_null_fact_price_snapshots_product_key ......................... [[32mPASS[0m in 2.95s]
+[2026-08-01T20:38:07.858+0000] {subprocess.py:106} INFO - [0m20:38:07  16 of 22 START test relationships_fact_price_snapshots_product_key__product_key__ref_dim_product_  [RUN]
+[2026-08-01T20:38:10.310+0000] {subprocess.py:106} INFO - [0m20:38:10  13 of 22 PASS relationships_fact_price_snapshots_category_key__category_key__ref_dim_category_  [[32mPASS[0m in 2.63s]
+[2026-08-01T20:38:10.319+0000] {subprocess.py:106} INFO - [0m20:38:10  17 of 22 START test test1 ...................................................... [RUN]
+[2026-08-01T20:38:10.411+0000] {subprocess.py:106} INFO - [0m20:38:10  16 of 22 PASS relationships_fact_price_snapshots_product_key__product_key__ref_dim_product_  [[32mPASS[0m in 2.55s]
+[2026-08-01T20:38:10.414+0000] {subprocess.py:106} INFO - [0m20:38:10  15 of 22 PASS relationships_fact_price_snapshots_platform_key__platform_key__ref_dim_platform_  [[32mPASS[0m in 2.61s]
+[2026-08-01T20:38:10.423+0000] {subprocess.py:106} INFO - [0m20:38:10  18 of 22 START test unique_dim_category_category_key ........................... [RUN]
+[2026-08-01T20:38:10.426+0000] {subprocess.py:106} INFO - [0m20:38:10  14 of 22 PASS relationships_fact_price_snapshots_date_key__date_key__ref_dim_date_  [[32mPASS[0m in 2.71s]
+[2026-08-01T20:38:10.428+0000] {subprocess.py:106} INFO - [0m20:38:10  19 of 22 START test unique_dim_date_date_key ................................... [RUN]
+[2026-08-01T20:38:10.460+0000] {subprocess.py:106} INFO - [0m20:38:10  20 of 22 START test unique_dim_platform_platform_key ........................... [RUN]
+[2026-08-01T20:38:12.957+0000] {subprocess.py:106} INFO - [0m20:38:12  17 of 22 ERROR test1 ........................................................... [[31mERROR[0m in 2.64s]
+[2026-08-01T20:38:12.965+0000] {subprocess.py:106} INFO - [0m20:38:12  21 of 22 START test unique_dim_product_product_key ............................. [RUN]
+[2026-08-01T20:38:13.159+0000] {subprocess.py:106} INFO - [0m20:38:13  20 of 22 PASS unique_dim_platform_platform_key ................................. [[32mPASS[0m in 2.68s]
+[2026-08-01T20:38:13.162+0000] {subprocess.py:106} INFO - [0m20:38:13  18 of 22 PASS unique_dim_category_category_key ................................. [[32mPASS[0m in 2.73s]
+[2026-08-01T20:38:13.191+0000] {subprocess.py:106} INFO - [0m20:38:13  22 of 22 START test unique_fact_price_snapshots_snapshot_id .................... [RUN]
+[2026-08-01T20:38:13.256+0000] {subprocess.py:106} INFO - [0m20:38:13  19 of 22 PASS unique_dim_date_date_key ......................................... [[32mPASS[0m in 2.82s]
+[2026-08-01T20:38:15.618+0000] {subprocess.py:106} INFO - [0m20:38:15  21 of 22 PASS unique_dim_product_product_key ................................... [[32mPASS[0m in 2.65s]
+[2026-08-01T20:38:15.816+0000] {subprocess.py:106} INFO - [0m20:38:15  22 of 22 PASS unique_fact_price_snapshots_snapshot_id .......................... [[32mPASS[0m in 2.62s]
+[2026-08-01T20:38:17.703+0000] {subprocess.py:106} INFO - [0m20:38:17
+[2026-08-01T20:38:17.704+0000] {subprocess.py:106} INFO - [0m20:38:17  Finished running 22 data tests in 0 hours 0 minutes and 24.51 seconds (24.51s).
+[2026-08-01T20:38:17.992+0000] {subprocess.py:106} INFO - [0m20:38:17
+[2026-08-01T20:38:17.993+0000] {subprocess.py:106} INFO - [0m20:38:17  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[2026-08-01T20:38:17.996+0000] {subprocess.py:106} INFO - [0m20:38:17
+[2026-08-01T20:38:17.997+0000] {subprocess.py:106} INFO - [0m20:38:17  [[31mERROR[0m]: in test test1 (tests/test1.sql)
+[2026-08-01T20:38:17.999+0000] {subprocess.py:106} INFO - [0m20:38:17    Database Error in test test1 (tests/test1.sql)
+[2026-08-01T20:38:18.000+0000] {subprocess.py:106} INFO -   syntax error at or near ";" in context "mrp < 0;", at line 14, column 73
+[2026-08-01T20:38:18.001+0000] {subprocess.py:106} INFO -   compiled code at target/run/pricescope/tests/test1.sql
+[2026-08-01T20:38:18.002+0000] {subprocess.py:106} INFO - [0m20:38:18
+[2026-08-01T20:38:18.004+0000] {subprocess.py:106} INFO - [0m20:38:18    compiled code at target/compiled/pricescope/tests/test1.sql
+[2026-08-01T20:38:18.005+0000] {subprocess.py:106} INFO - [0m20:38:18
+[2026-08-01T20:38:18.007+0000] {subprocess.py:106} INFO - [0m20:38:18  Done. PASS=21 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=22
+[2026-08-01T20:38:19.857+0000] {subprocess.py:110} INFO - Command exited with return code 1
+[2026-08-01T20:38:19.868+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-08-01T20:38:19.874+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=pricescope_pipeline, task_id=dbt_test, run_id=scheduled__2026-08-01T06:00:00+00:00, execution_date=20260801T060000, start_date=20260801T203749, end_date=20260801T203819
+[2026-08-01T20:38:19.888+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-08-01T20:38:19.891+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 34 for task dbt_test (Bash command failed. The command returned a non-zero exit code 1.; 1778)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-08-01T20:38:19.928+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-08-01T20:38:19.960+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-08-01T20:38:19.964+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

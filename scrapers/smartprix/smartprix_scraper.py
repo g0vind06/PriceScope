@@ -4,6 +4,7 @@ import json
 import time
 import random
 import boto3
+import argparse
 from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
@@ -153,10 +154,12 @@ def parse_products(html, category):
 
 
 # --- S3 UPLOAD ---
-def upload_to_s3(data, category):
+def upload_to_s3(data, category, partition_dt=None):
     """
     Upload JSON to:
     bronze/source=smartprix/category={cat}/year=/month=/day=/hour=/file.json
+
+    partition_dt sets the s3 partition folder (aligned to Airflow's logical run). The filename itself uses real upload time for traceability.
     """
     s3 = boto3.client(
         's3',
@@ -165,12 +168,15 @@ def upload_to_s3(data, category):
         region_name=AWS_REGION
     )
 
+    partition = partition_dt if partition_dt else datetime.now(timezone.utc).replace(tzinfo=None)
+    upload_time = datetime.now(timezone.utc).replace(tzinfo=None)  # Actual upload time for filename
+
     now = datetime.now(timezone.utc).replace(tzinfo=None)  # UTC without tzinfo for S3 key
     s3_key = (
         f"{BRONZE_PREFIX}/source=smartprix/category={category}/"
-        f"year={now.year}/month={now.month:02d}/"
-        f"day={now.day:02d}/hour={now.hour:02d}/"
-        f"smartprix_{category}_{now.strftime('%Y%m%d_%H%M%S')}.json"
+        f"year={partition.year}/month={partition.month:02d}/"
+        f"day={partition.day:02d}/hour={partition.hour:02d}/"
+        f"smartprix_{category}_{upload_time.strftime('%Y%m%d_%H%M%S')}.json"
     )
 
     s3.put_object(
@@ -203,11 +209,20 @@ def scrape_category(playwright_page, category_name, base_url):
     return all_products
 
 
-def run():
+def run(run_date=None, run_hour=None):
     print("=" * 50)
     print("Smartprix Scraper Starting")
     print(f"Run time: {datetime.now(timezone.utc).replace(tzinfo=None)}")
     print("=" * 50)
+
+#partition_dt drives the s3 folder path. If Airflow supplied run_date/run_hour, use that(so bronze matches what Glue will look for). Otherwise, fallback to actual current time - keeps standalone/local runs working unchanged.
+
+    if run_date and run_hour:
+        partition_dt = datetime.strptime(run_date, '%Y-%m-%d').replace(hour=int(run_hour))
+        print(f"Using provided run_date/run_hour for partitioning: {run_date} {run_hour}")
+    else:
+        partition_dt = datetime.now(timezone.utc).replace(tzinfo=None)
+        print(f"No run_date/run_hour provided. Using current UTC time for partitioning: {partition_dt}")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -230,7 +245,7 @@ def run():
             products = scrape_category(page, category_name, base_url)
 
             if products:
-                s3_key = upload_to_s3(products, category_name)
+                s3_key = upload_to_s3(products, category_name, partition_dt)
                 print(f"\nDone: {len(products)} products → {s3_key}")
             else:
                 print(f"Nothing scraped for {category_name}")
@@ -241,4 +256,8 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    parser = argparse.ArgumentParser(description="Smartprix Scraper")
+    parser.add_argument("--run_date", type=str, default=None)
+    parser.add_argument("--run_hour", type=str, default=None)
+    args = parser.parse_args()
+    run(run_date=args.run_date, run_hour=args.run_hour)

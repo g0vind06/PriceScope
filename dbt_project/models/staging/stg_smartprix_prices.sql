@@ -21,7 +21,8 @@ renamed as (
         is_rating_available,
         source,
         scraped_at,
-        run_date
+        run_date,
+        run_hour
     from source 
 )
 

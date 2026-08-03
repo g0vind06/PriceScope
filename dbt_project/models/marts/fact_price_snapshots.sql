@@ -12,7 +12,8 @@ WITH base AS (
         rating,
         is_rating_available,
         scraped_at,
-        run_date
+        run_date,
+        run_hour
     FROM {{ ref('stg_smartprix_prices') }}
 ),
 
@@ -29,7 +30,8 @@ joined AS (
         b.rating,
         b.is_rating_available,
         b.scraped_at,
-        b.run_date
+        b.run_date,
+        b.run_hour
     FROM base b
     LEFT JOIN {{ ref("dim_category") }} cat ON b.category=cat.category_name
     LEFT JOIN {{ ref("dim_platform") }} plat ON b.source=plat.platform_name
@@ -59,7 +61,8 @@ final AS (
         previous_price,
         current_price-previous_price AS price_change,
         scraped_at,
-        run_date
+        run_date,
+        run_hour
     FROM with_trend
 )
 

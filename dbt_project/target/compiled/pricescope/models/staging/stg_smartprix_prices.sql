@@ -1,4 +1,4 @@
-
+   --since views can't reference external tables, we override the materialized for staging as table.
 
 with source as (
     select
@@ -21,7 +21,8 @@ renamed as (
         is_rating_available,
         source,
         scraped_at,
-        run_date
+        run_date,
+        run_hour
     from source 
 )
 

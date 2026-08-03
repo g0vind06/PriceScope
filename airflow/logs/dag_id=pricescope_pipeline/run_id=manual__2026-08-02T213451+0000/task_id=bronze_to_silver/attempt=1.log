@@ -1,0 +1,109 @@
+[2026-08-02T21:35:17.572+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-08-02T21:35:17.592+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pricescope_pipeline.bronze_to_silver manual__2026-08-02T21:34:51+00:00 [queued]>
+[2026-08-02T21:35:17.604+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pricescope_pipeline.bronze_to_silver manual__2026-08-02T21:34:51+00:00 [queued]>
+[2026-08-02T21:35:17.606+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-08-02T21:35:17.623+0000] {taskinstance.py:2889} INFO - Executing <Task(GlueJobOperator): bronze_to_silver> on 2026-08-02 21:34:51+00:00
+[2026-08-02T21:35:17.633+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=4782) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-08-02T21:35:17.636+0000] {standard_task_runner.py:72} INFO - Started process 4783 to run task
+[2026-08-02T21:35:17.636+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'pricescope_pipeline', 'bronze_to_silver', 'manual__2026-08-02T21:34:51+00:00', '--job-id', '75', '--raw', '--subdir', 'DAGS_FOLDER/pricescope_pipeline.py', '--cfg-path', '/tmp/tmpb4ezk4yn']
+[2026-08-02T21:35:17.639+0000] {standard_task_runner.py:105} INFO - Job 75: Subtask bronze_to_silver
+[2026-08-02T21:35:17.739+0000] {task_command.py:467} INFO - Running <TaskInstance: pricescope_pipeline.bronze_to_silver manual__2026-08-02T21:34:51+00:00 [running]> on host a06cd3c668fc
+[2026-08-02T21:35:17.871+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='govind' AIRFLOW_CTX_DAG_ID='pricescope_pipeline' AIRFLOW_CTX_TASK_ID='bronze_to_silver' AIRFLOW_CTX_EXECUTION_DATE='2026-08-02T21:34:51+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-08-02T21:34:51+00:00'
+[2026-08-02T21:35:17.874+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-08-02T21:35:17.890+0000] {glue.py:188} INFO - Initializing AWS Glue Job: pricescope-bronze-to-silver. Wait for completion: True
+[2026-08-02T21:35:17.893+0000] {glue.py:365} INFO - Checking if job already exists: pricescope-bronze-to-silver
+[2026-08-02T21:35:17.904+0000] {base_aws.py:603} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2026-08-02T21:35:17.908+0000] {base_aws.py:177} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name='eu-north-1'). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2026-08-02T21:35:18.150+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2026-08-02T21:35:19.147+0000] {glue.py:191} ERROR - Failed to run aws glue job, error: An error occurred (ConcurrentRunsExceededException) when calling the StartJobRun operation: Concurrent runs exceeded.
+[2026-08-02T21:35:19.150+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/operators/glue.py", line 193, in execute
+    glue_job_run = self.glue_job_hook.initialize_job(self.script_args, self.run_job_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/glue.py", line 189, in initialize_job
+    return self.conn.start_job_run(JobName=job_name, Arguments=script_arguments, **run_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ConcurrentRunsExceededException: An error occurred (ConcurrentRunsExceededException) when calling the StartJobRun operation: Concurrent runs exceeded.
+[2026-08-02T21:35:19.179+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=pricescope_pipeline, task_id=bronze_to_silver, run_id=manual__2026-08-02T21:34:51+00:00, execution_date=20260802T213451, start_date=20260802T213517, end_date=20260802T213519
+[2026-08-02T21:35:19.211+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-08-02T21:35:19.213+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 75 for task bronze_to_silver (An error occurred (ConcurrentRunsExceededException) when calling the StartJobRun operation: Concurrent runs exceeded.; 4783)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/operators/glue.py", line 193, in execute
+    glue_job_run = self.glue_job_hook.initialize_job(self.script_args, self.run_job_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/glue.py", line 189, in initialize_job
+    return self.conn.start_job_run(JobName=job_name, Arguments=script_arguments, **run_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 1023, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ConcurrentRunsExceededException: An error occurred (ConcurrentRunsExceededException) when calling the StartJobRun operation: Concurrent runs exceeded.
+[2026-08-02T21:35:19.262+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-08-02T21:35:19.295+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-08-02T21:35:19.301+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

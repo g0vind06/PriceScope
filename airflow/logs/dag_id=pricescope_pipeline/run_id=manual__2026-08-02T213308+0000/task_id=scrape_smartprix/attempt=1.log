@@ -1,0 +1,55 @@
+[2026-08-02T21:33:11.518+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-08-02T21:33:11.539+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pricescope_pipeline.scrape_smartprix manual__2026-08-02T21:33:08+00:00 [queued]>
+[2026-08-02T21:33:11.551+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pricescope_pipeline.scrape_smartprix manual__2026-08-02T21:33:08+00:00 [queued]>
+[2026-08-02T21:33:11.554+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-08-02T21:33:11.574+0000] {taskinstance.py:2889} INFO - Executing <Task(BashOperator): scrape_smartprix> on 2026-08-02 21:33:08+00:00
+[2026-08-02T21:33:11.586+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'pricescope_pipeline', 'scrape_smartprix', 'manual__2026-08-02T21:33:08+00:00', '--job-id', '72', '--raw', '--subdir', 'DAGS_FOLDER/pricescope_pipeline.py', '--cfg-path', '/tmp/tmpagwfov6_']
+[2026-08-02T21:33:11.583+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=4562) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-08-02T21:33:11.591+0000] {standard_task_runner.py:105} INFO - Job 72: Subtask scrape_smartprix
+[2026-08-02T21:33:11.594+0000] {standard_task_runner.py:72} INFO - Started process 4563 to run task
+[2026-08-02T21:33:11.688+0000] {task_command.py:467} INFO - Running <TaskInstance: pricescope_pipeline.scrape_smartprix manual__2026-08-02T21:33:08+00:00 [running]> on host a06cd3c668fc
+[2026-08-02T21:33:11.824+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='govind' AIRFLOW_CTX_DAG_ID='pricescope_pipeline' AIRFLOW_CTX_TASK_ID='scrape_smartprix' AIRFLOW_CTX_EXECUTION_DATE='2026-08-02T21:33:08+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-08-02T21:33:08+00:00'
+[2026-08-02T21:33:11.827+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-08-02T21:33:11.847+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2026-08-02T21:33:11.850+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/pricescope && python scrapers/smartprix/smartprix_scraper.py']
+[2026-08-02T21:33:11.863+0000] {subprocess.py:99} INFO - Output:
+[2026-08-02T21:33:38.141+0000] {subprocess.py:106} INFO - ==================================================
+[2026-08-02T21:33:38.144+0000] {subprocess.py:106} INFO - Smartprix Scraper Starting
+[2026-08-02T21:33:38.146+0000] {subprocess.py:106} INFO - Run time: 2026-08-02 21:33:13.369123
+[2026-08-02T21:33:38.148+0000] {subprocess.py:106} INFO - ==================================================
+[2026-08-02T21:33:38.150+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.152+0000] {subprocess.py:106} INFO - Category: SMARTPHONES
+[2026-08-02T21:33:38.153+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.155+0000] {subprocess.py:106} INFO -  Page 1...
+[2026-08-02T21:33:38.157+0000] {subprocess.py:106} INFO -  Fetching: https://www.smartprix.com/mobiles
+[2026-08-02T21:33:38.159+0000] {subprocess.py:106} INFO -  Parsed 28 products (total: 28)
+[2026-08-02T21:33:38.160+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.162+0000] {subprocess.py:106} INFO -  Page 2...
+[2026-08-02T21:33:38.164+0000] {subprocess.py:106} INFO -  Fetching: https://www.smartprix.com/mobiles?page=2
+[2026-08-02T21:33:38.165+0000] {subprocess.py:106} INFO -  Parsed 28 products (total: 56)
+[2026-08-02T21:33:38.167+0000] {subprocess.py:106} INFO -  Uploaded → s3://price-scope/bronze/source=smartprix/category=smartphones/year=2026/month=08/day=02/hour=21/smartprix_smartphones_20260802_213326.json
+[2026-08-02T21:33:38.168+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.170+0000] {subprocess.py:106} INFO - Done: 56 products → bronze/source=smartprix/category=smartphones/year=2026/month=08/day=02/hour=21/smartprix_smartphones_20260802_213326.json
+[2026-08-02T21:33:38.172+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.174+0000] {subprocess.py:106} INFO - Category: LAPTOPS
+[2026-08-02T21:33:38.178+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.181+0000] {subprocess.py:106} INFO -  Page 1...
+[2026-08-02T21:33:38.183+0000] {subprocess.py:106} INFO -  Fetching: https://www.smartprix.com/laptops
+[2026-08-02T21:33:38.185+0000] {subprocess.py:106} INFO -  Parsed 28 products (total: 28)
+[2026-08-02T21:33:38.187+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.190+0000] {subprocess.py:106} INFO -  Page 2...
+[2026-08-02T21:33:38.191+0000] {subprocess.py:106} INFO -  Fetching: https://www.smartprix.com/laptops?page=2
+[2026-08-02T21:33:38.193+0000] {subprocess.py:106} INFO -  Parsed 28 products (total: 56)
+[2026-08-02T21:33:38.195+0000] {subprocess.py:106} INFO -  Uploaded → s3://price-scope/bronze/source=smartprix/category=laptops/year=2026/month=08/day=02/hour=21/smartprix_laptops_20260802_213337.json
+[2026-08-02T21:33:38.196+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.198+0000] {subprocess.py:106} INFO - Done: 56 products → bronze/source=smartprix/category=laptops/year=2026/month=08/day=02/hour=21/smartprix_laptops_20260802_213337.json
+[2026-08-02T21:33:38.199+0000] {subprocess.py:106} INFO - 
+[2026-08-02T21:33:38.201+0000] {subprocess.py:106} INFO - Scraper finished.
+[2026-08-02T21:33:38.320+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2026-08-02T21:33:38.398+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-08-02T21:33:38.401+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=pricescope_pipeline, task_id=scrape_smartprix, run_id=manual__2026-08-02T21:33:08+00:00, execution_date=20260802T213308, start_date=20260802T213311, end_date=20260802T213338
+[2026-08-02T21:33:38.449+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-08-02T21:33:38.503+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-08-02T21:33:38.510+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

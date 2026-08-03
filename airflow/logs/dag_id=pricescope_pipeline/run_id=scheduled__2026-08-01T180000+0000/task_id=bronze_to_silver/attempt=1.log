@@ -1,0 +1,41 @@
+[2026-08-02T10:21:09.948+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-08-02T10:21:09.992+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pricescope_pipeline.bronze_to_silver scheduled__2026-08-01T18:00:00+00:00 [queued]>
+[2026-08-02T10:21:10.017+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pricescope_pipeline.bronze_to_silver scheduled__2026-08-01T18:00:00+00:00 [queued]>
+[2026-08-02T10:21:10.020+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2026-08-02T10:21:10.047+0000] {taskinstance.py:2889} INFO - Executing <Task(GlueJobOperator): bronze_to_silver> on 2026-08-01 18:00:00+00:00
+[2026-08-02T10:21:10.060+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=177) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-08-02T10:21:10.064+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'pricescope_pipeline', 'bronze_to_silver', 'scheduled__2026-08-01T18:00:00+00:00', '--job-id', '41', '--raw', '--subdir', 'DAGS_FOLDER/pricescope_pipeline.py', '--cfg-path', '/tmp/tmps5ei754_']
+[2026-08-02T10:21:10.071+0000] {standard_task_runner.py:72} INFO - Started process 186 to run task
+[2026-08-02T10:21:10.074+0000] {standard_task_runner.py:105} INFO - Job 41: Subtask bronze_to_silver
+[2026-08-02T10:21:10.260+0000] {task_command.py:467} INFO - Running <TaskInstance: pricescope_pipeline.bronze_to_silver scheduled__2026-08-01T18:00:00+00:00 [running]> on host a06cd3c668fc
+[2026-08-02T10:21:10.487+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='govind' AIRFLOW_CTX_DAG_ID='pricescope_pipeline' AIRFLOW_CTX_TASK_ID='bronze_to_silver' AIRFLOW_CTX_EXECUTION_DATE='2026-08-01T18:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-08-01T18:00:00+00:00'
+[2026-08-02T10:21:10.491+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-08-02T10:21:10.537+0000] {glue.py:188} INFO - Initializing AWS Glue Job: pricescope-bronze-to-silver. Wait for completion: True
+[2026-08-02T10:21:10.541+0000] {glue.py:365} INFO - Checking if job already exists: pricescope-bronze-to-silver
+[2026-08-02T10:21:10.569+0000] {base_aws.py:603} WARNING - Unable to find AWS Connection ID 'aws_default', switching to empty.
+[2026-08-02T10:21:10.573+0000] {base_aws.py:177} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name='eu-north-1'). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2026-08-02T10:21:11.493+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2026-08-02T10:21:12.959+0000] {glue.py:209} INFO - You can monitor this Glue Job run at: https://console.aws.amazon.com/gluestudio/home?region=eu-north-1#/job/pricescope-bronze-to-silver/run/jr_651932771c8856a6e7b0491bbe5e994ac7c9d48c145f95fc4bde2ea43e9e3ff9
+[2026-08-02T10:21:13.181+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:19.418+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:25.648+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:31.890+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:38.142+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:44.395+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:50.628+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:21:56.875+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:03.521+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:09.764+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:16.008+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:22.254+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:28.495+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:34.730+0000] {glue.py:348} INFO - Polling for AWS Glue Job pricescope-bronze-to-silver current run state with status RUNNING
+[2026-08-02T10:22:40.926+0000] {glue.py:341} INFO - Exiting Job jr_651932771c8856a6e7b0491bbe5e994ac7c9d48c145f95fc4bde2ea43e9e3ff9 Run State: SUCCEEDED
+[2026-08-02T10:22:40.928+0000] {glue.py:224} INFO - AWS Glue Job: pricescope-bronze-to-silver status: SUCCEEDED. Run Id: jr_651932771c8856a6e7b0491bbe5e994ac7c9d48c145f95fc4bde2ea43e9e3ff9
+[2026-08-02T10:22:40.950+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-08-02T10:22:40.952+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=pricescope_pipeline, task_id=bronze_to_silver, run_id=scheduled__2026-08-01T18:00:00+00:00, execution_date=20260801T180000, start_date=20260802T102109, end_date=20260802T102240
+[2026-08-02T10:22:41.009+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-08-02T10:22:41.030+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-08-02T10:22:41.036+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
