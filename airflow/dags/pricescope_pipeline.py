@@ -9,6 +9,9 @@ default_args = {
     'depends_on_past': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
+    'email_on_failure': True,
+    'email_on_retry': False,
+    'email': ['tiwarigovind0601@gmail.com']
 }
 
 with DAG(
