@@ -20,7 +20,7 @@ with DAG(
     default_args=default_args,
     schedule="0 6,18 * * *",  # Run at 6 AM and 6 PM UTC (8 AM and 8 PM IST)
     start_date=datetime(2026, 7, 30),
-    catchup=False,
+    catchup=True,
     tags=['pricescope'],
 ) as dag:
 
