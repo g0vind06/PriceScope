@@ -101,6 +101,10 @@ x-airflow-common:
     - ../config:/opt/airflow/pricescope/config
     - ../dbt_project:/opt/airflow/pricescope/dbt_project
     - ../.env:/opt/airflow/pricescope/.env
+  
+  env_file:
+    - .env
+
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
